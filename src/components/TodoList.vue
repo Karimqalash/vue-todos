@@ -34,27 +34,40 @@ export default {
   props: {
     listName: String,
   },
+  mounted() {
+    if (localStorage.getItem('todos')) {
+      try {
+        this.todos = JSON.parse(localStorage.getItem('todos'));
+      } catch(e) {
+        localStorage.removeItem('todos');
+      }
+    }
+  },
   data() {
     return {
-      todos: [
-        { description: "Do the dishes", completed: false },
-        { description: "Take out the trash", completed: false },
-        { description: "Finish doing laundry", completed: false },
-      ],
+      todos: [],
     };
   },
   methods: {
     addTodo(newTodo) {
       this.todos.push({ description: newTodo, completed: false });
+      this.updateStorage();
     },
     toggleTodo(todo) {
       todo.completed = !todo.completed;
+      this.updateStorage();
     },
     deleteTodo(deletedTodo) {
       this.todos = this.todos.filter(todo => todo !== deletedTodo);
+      this.updateStorage();
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
+      this.updateStorage();
+    },
+    updateStorage() {
+      const parsed = JSON.stringify(this.todos);
+      localStorage.setItem('todos', parsed);
     },
   },
   components: { Todo, CreateTodo },
