@@ -32,20 +32,20 @@ import CreateTodo from "./CreateTodo.vue";
 
 export default {
   props: {
-    listName: String,
+    listName: String
   },
   mounted() {
-    if (localStorage.getItem('todos')) {
+    if (localStorage.getItem("todos")) {
       try {
-        this.todos = JSON.parse(localStorage.getItem('todos'));
-      } catch(e) {
-        localStorage.removeItem('todos');
+        this.todos = JSON.parse(localStorage.getItem("todos"));
+      } catch (e) {
+        localStorage.removeItem("todos");
       }
     }
   },
   data() {
     return {
-      todos: [],
+      todos: []
     };
   },
   methods: {
@@ -67,10 +67,10 @@ export default {
     },
     updateStorage() {
       const parsed = JSON.stringify(this.todos);
-      localStorage.setItem('todos', parsed);
-    },
+      localStorage.setItem("todos", parsed);
+    }
   },
-  components: { Todo, CreateTodo },
+  components: { Todo, CreateTodo }
 };
 </script>
 

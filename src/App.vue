@@ -1,15 +1,15 @@
 <template>
-  <todo-list list-name="My to-dos" />
+  <DefaultLayout />
 </template>
 
 <script>
-import TodoList from "./components/TodoList.vue";
+import DefaultLayout from "./views/DefaultLayout.vue";
 
 export default {
   name: "App",
   components: {
-    TodoList,
-  },
+    DefaultLayout
+  }
 };
 </script>
 
