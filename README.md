@@ -20,7 +20,7 @@ yarn build
 yarn lint
 ```
 
-### Build test files
+### Build tests files
 ```
 yarn test:unit
 ```
