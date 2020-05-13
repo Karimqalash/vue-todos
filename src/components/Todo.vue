@@ -15,18 +15,21 @@
         v-model="newTodoDescription"
         @blur="finishEditing()"
         ref="newTodo"
+        id="form-input"
       />
     </form>
     <div v-show="isEditable">
       <button
         @click="startEditing()"
         class="btn btn-outline-primary border-0 ml-2"
+        id="edit-btn"
       >
         <span class="fa fa-edit"></span>
       </button>
       <button
         @click="$emit('on-delete')"
         class="btn btn-outline-danger border-0"
+        id="delete-btn"
       >
         <span class="fa fa-trash"></span>
       </button>

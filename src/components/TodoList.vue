@@ -36,6 +36,15 @@ export default {
     listName: String,
     listType: String
   },
+  mounted() {
+    if (localStorage.getItem("todos")) {
+      try {
+        this.todos = JSON.parse(localStorage.getItem("todos"));
+      } catch (e) {
+        localStorage.removeItem("todos");
+      }
+    }
+  },
   computed: {
     showTodo: function() {
       switch (this.listType) {
@@ -45,15 +54,6 @@ export default {
           return this.todos.filter(todo => todo.completed);
         default:
           return this.todos;
-      }
-    }
-  },
-  mounted() {
-    if (localStorage.getItem("todos")) {
-      try {
-        this.todos = JSON.parse(localStorage.getItem("todos"));
-      } catch (e) {
-        localStorage.removeItem("todos");
       }
     }
   },
