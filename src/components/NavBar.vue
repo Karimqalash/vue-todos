@@ -5,10 +5,10 @@
         <router-link class="nav-link" to="/">All Todos</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/">Todos</router-link>
+        <router-link class="nav-link" to="/todo">Todos</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/">Done Todos</router-link>
+        <router-link class="nav-link" to="/done">Done Todos</router-link>
       </li>
     </ul>
   </nav>

@@ -1,13 +1,13 @@
 <template>
   <li class="d-flex align-items-center list-group-item">
-    <button
-      class="btn border-0 flex-grow-1 text-left shadow-none"
-      :class="{ completed }"
+    <div
+      class="checkbox border-0 flex-grow-1 text-left shadow-none"
       @click="$emit('on-toggle')"
       v-if="!isEditing"
     >
+      <input class="mr-2" type="checkbox" :checked="completed" />
       <span>{{ description }}</span>
-    </button>
+    </div>
     <form v-else class="flex-grow-1" @submit.prevent="finishEditing()">
       <input
         type="text"
@@ -17,15 +17,20 @@
         ref="newTodo"
       />
     </form>
-    <button
-      @click="startEditing()"
-      class="btn btn-outline-primary border-0 ml-2"
-    >
-      <span class="fa fa-edit"></span>
-    </button>
-    <button @click="$emit('on-delete')" class="btn btn-outline-danger border-0">
-      <span class="fa fa-trash"></span>
-    </button>
+    <div v-show="isEditable">
+      <button
+        @click="startEditing()"
+        class="btn btn-outline-primary border-0 ml-2"
+      >
+        <span class="fa fa-edit"></span>
+      </button>
+      <button
+        @click="$emit('on-delete')"
+        class="btn btn-outline-danger border-0"
+      >
+        <span class="fa fa-trash"></span>
+      </button>
+    </div>
   </li>
 </template>
 
@@ -38,6 +43,7 @@ export default {
     };
   },
   props: {
+    isEditable: Boolean,
     description: String,
     completed: Boolean
   },
